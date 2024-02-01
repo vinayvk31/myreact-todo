@@ -1,6 +1,7 @@
+import React from "react";
 import TodoRowItem from "./TodoRowItem";
 
-function TodoTable(props){
+function TodoTable(props: {todos: TodoModel[], deleteTodo: Function} ){
 
     const todos = props.todos;
 

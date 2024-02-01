@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import TodoTable from './components/TodoTable.js';
-import NewTodoForm from './components/NewTodoForm.js';
+import TodoTable from './components/TodoTable';
+import NewTodoForm from './components/NewTodoForm';
 
 function App() {
 
@@ -14,7 +14,7 @@ function App() {
     { rowNumber: 4, rowDescription: 'Charge phone battery', rowAssigned: 'User One' }
   ])
 
-  const addTodo = (description, assigned) => {
+  const addTodo = (description: string, assigned: string) => {
     let rowNumber = 0;
     if (todos.length > 0) {
       rowNumber = todos[todos.length - 1].rowNumber + 1;
@@ -30,9 +30,9 @@ function App() {
     setTodos(todos => [...todos, newTodo]);
   }
 
-  const deleteTodo = (deleteTodoRowNumber) =>{
-    let filtered = todos.filter(function(value){
-      return value.rowNumber!==deleteTodoRowNumber;
+  const deleteTodo = (deleteTodoRowNumber: number) => {
+    let filtered = todos.filter(function (value) {
+      return value.rowNumber !== deleteTodoRowNumber;
     });
     setTodos(filtered);
   }
@@ -44,11 +44,11 @@ function App() {
           Your Todo's
         </div>
         <div className="card-body">
-          <TodoTable todos={todos} deleteTodo={deleteTodo}/>
-          <button 
+          <TodoTable todos={todos} deleteTodo={deleteTodo} />
+          <button
             className='btn btn-primary'
-            onClick={()=>setShowAddTodoForm(!showAddTodoForm)}>
-            {showAddTodoForm? 'Close New Todo':'New Todo'}
+            onClick={() => setShowAddTodoForm(!showAddTodoForm)}>
+            {showAddTodoForm ? 'Close New Todo' : 'New Todo'}
           </button>
           {showAddTodoForm && <NewTodoForm addTodo={addTodo} />}
         </div>
